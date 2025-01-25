@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxNumberOfEnemy: 10
+  maxNumberOfEnemy: 40
   spawningCooldown: 1
   startNumber: 8
   enemyPrefabList:
@@ -54,6 +54,5 @@ MonoBehaviour:
   - {fileID: 5705084147753162646, guid: 360b8e12220116b488b5fe10720c6a7e, type: 3}
   spawnZoneSize: {x: 28, y: 0, z: 28}
   spawnZoneHoleSize: {x: 20, y: 0, z: 20}
-  playerNoSpawnRadius: 10
-  enemySpawnY: 1.5
+  playerNoSpawnRadius: 8
   maxAttemptForSpawningEnemy: 20

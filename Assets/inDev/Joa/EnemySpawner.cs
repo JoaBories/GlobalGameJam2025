@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector3 spawnZoneSize;
     [SerializeField] private Vector3 spawnZoneHoleSize;
     [SerializeField] private float playerNoSpawnRadius;
-    [SerializeField] private float enemySpawnY;
     [SerializeField] private int maxAttemptForSpawningEnemy;
 
     private bool spawnNextEnemy;
@@ -107,6 +106,6 @@ public class EnemySpawner : MonoBehaviour
         float randX = Random.Range(spawnZoneSize.x / 2, -spawnZoneSize.x / 2);
         float randY = Random.Range(spawnZoneSize.z / 2, -spawnZoneSize.z / 2);
 
-        return new Vector3(randX, enemySpawnY, randY);
+        return new Vector3(randX, 0, randY);
     }
 }
