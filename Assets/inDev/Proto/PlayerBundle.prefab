@@ -269,6 +269,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e93425c-ef32-445f-ad37-b83ad53b3a60
     m_ActionName: Gameplay/Shoot[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8309590939273034072}
+        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
+        m_MethodName: OnReload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 08e08e2b-ea79-413a-9aae-a89507493e01
+    m_ActionName: Gameplay/Test[/Keyboard/t,/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8309590939273034072}
+        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2d81e1fa-e1b4-42ad-82ee-8c8eba9e134d
+    m_ActionName: Gameplay/Reload[/Keyboard/r,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -375,6 +407,9 @@ MonoBehaviour:
   shootCooldown: 0.2
   bulletOffset: 1
   damage: 1
+  maxAmmo: 50
+  ammoPerSecOfReload: 5
+  ammoPerBullet: 1
 --- !u!1 &2171914799507670829
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,28 +5,50 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] GameObject bubblePrefab;
-    [SerializeField] Transform shootDirection;
-    [SerializeField] Transform eyes;
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float bulletLifeSpan;
-    [SerializeField] float shootCooldown;
-    [SerializeField] float bulletOffset;
-    [SerializeField] float damage;
+    [SerializeField] private GameObject bubblePrefab;
+    [SerializeField] private Transform shootDirection;
+    [SerializeField] private Transform eyes;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float bulletLifeSpan;
+    [SerializeField] private float shootCooldown;
+    [SerializeField] private float bulletOffset;
+    [SerializeField] private float damage;
+    [SerializeField] private float maxAmmo;
+    [SerializeField] private float ammoPerSecOfReload;
+    [SerializeField] private float ammoPerBullet;
 
-    float lastShootTimer;
+    private float ammo;
+    private float lastShootTimer;
 
     private bool shooting;
+
+    private bool reloading;
+
+    private void Start()
+    {
+        ammo = maxAmmo;
+    }
 
     private void FixedUpdate()
     {
         lastShootTimer -= Time.fixedDeltaTime;
 
-        if (shooting && lastShootTimer <= 0)
+        if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
         {
             Shoot();
             lastShootTimer = shootCooldown;
         }
+
+        if (reloading)
+        {
+            ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
+            if (ammo > maxAmmo)
+            {
+                ammo = maxAmmo;
+            }
+        }
+
+        Debug.Log(ammo);
     }
 
     private void Shoot()
@@ -36,6 +58,24 @@ public class PlayerShoot : MonoBehaviour
         currentBubble.GetComponent<BubbleScript>().lifeSpan = bulletLifeSpan;
         currentBubble.GetComponent<BubbleScript>().damage = damage;
         currentBubble.GetComponent<Rigidbody>().AddForce(shootDirection.forward * bulletSpeed, ForceMode.Impulse);
+
+        ammo -= ammoPerBullet;
+    }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        Debug.Log("yo");
+
+        if (context.started)
+        {
+            reloading = true;
+            Debug.Log("reloading");
+        }
+
+        if (context.canceled)
+        {
+            reloading = false;
+        }
     }
 
     public void OnFirePressed(InputAction.CallbackContext context)

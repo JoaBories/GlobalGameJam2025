@@ -509,18 +509,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &803655716 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7403531066067376698, guid: a12ee9563048c804bbce3cf7d9dc41c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 4226456340788837825}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b040fb95e2522454c9542e0dadeb12c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1143874917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 8103014211576924539, guid: a12ee9563048c804bbce3cf7d9dc41c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1240,7 +1233,7 @@ PrefabInstance:
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
@@ -1249,42 +1242,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 2d81e1fa-e1b4-42ad-82ee-8c8eba9e134d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_ActionName
       value: Gameplay/Test[/Keyboard/t,/XInputControllerWindows/select]
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Gameplay/Reload[/Keyboard/r,/XInputControllerWindows/buttonWest]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 803655716}
+      objectReference: {fileID: 5681623372636830127}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: getValidSpawnPoint
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Reload
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySpawner, Assembly-CSharp
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerShoot, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2659893926187645868, guid: b23c8c02242d8db4d9b8602f4396f478,
         type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6875890416541459112, guid: b23c8c02242d8db4d9b8602f4396f478,
@@ -1342,6 +1345,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8309590939273034072, guid: b23c8c02242d8db4d9b8602f4396f478,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309590939273034072, guid: b23c8c02242d8db4d9b8602f4396f478,
+        type: 3}
+      propertyPath: ammoPerSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309590939273034072, guid: b23c8c02242d8db4d9b8602f4396f478,
+        type: 3}
+      propertyPath: ammoPerBullet
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1353,6 +1371,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5681623372636830125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5681623372636830127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8309590939273034072, guid: b23c8c02242d8db4d9b8602f4396f478,
+    type: 3}
+  m_PrefabInstance: {fileID: 5681623372636830125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd0caa1673ffbd46baf6cdbf381b106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
