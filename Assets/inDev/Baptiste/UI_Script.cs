@@ -13,6 +13,8 @@ public class UI_Script : MonoBehaviour
     public Button resume;
     public Button quit;
     public Button upgrade;
+    public AudioSource soundSource;
+    public AudioClip clickSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +30,11 @@ public class UI_Script : MonoBehaviour
     {
         
     }
-    private void Play() { SceneManager.LoadScene(1); }
-    private void MainMenu() { SceneManager.LoadScene(0); }
-    private void Resume() { }
-    private void Quit() { Application.Quit(); }
-    private void Upgrade() { }
+    private void Play() { soundSource.PlayOneShot(clickSound);  SceneManager.LoadScene(1); }
+    private void MainMenu() { soundSource.PlayOneShot(clickSound); SceneManager.LoadScene(0); }
+    private void Resume() { soundSource.PlayOneShot(clickSound); }
+    private void Quit() { soundSource.PlayOneShot(clickSound);  Application.Quit(); }
+    private void Upgrade() { soundSource.PlayOneShot(clickSound); }
 
 
 }
