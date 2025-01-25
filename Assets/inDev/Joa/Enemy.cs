@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float pv;
     [SerializeField] public float damage;
+    [SerializeField] public int pointForKill;
 
 
     private void Awake()
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
         if (pv <= 0)
         {
             //animation yassified
+            GameManager.instance.GainPoints(pointForKill);
             Destroy(gameObject);
         } 
         else
