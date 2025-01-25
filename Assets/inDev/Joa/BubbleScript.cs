@@ -34,13 +34,10 @@ public class BubbleScript : MonoBehaviour
         {
             Pop();
         }
-        if (other.transform.parent != null)
+        if (other.CompareTag("Enemy"))
         {
-            if (other.transform.parent.CompareTag("Enemy"))
-            {
-                other.transform.parent.gameObject.GetComponent<Enemy>().Hit(damage);
-                Pop();
-            }
+            other.gameObject.GetComponent<Enemy>().Hit(damage);
+            Pop();
         }
     }
 

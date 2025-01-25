@@ -23,13 +23,10 @@ public class PlayerLife : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent != null)
+        GameObject currentEnemy = other.gameObject;
+        if (currentEnemy.CompareTag("Enemy"))
         {
-            GameObject currentEnemy = other.transform.parent.gameObject;
-            if (currentEnemy.CompareTag("Enemy"))
-            {
-                Hit(currentEnemy.GetComponent<Enemy>().damage);
-            }
+            Hit(currentEnemy.GetComponent<Enemy>().damage);
         }
     }
 
