@@ -1169,16 +1169,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5681623372636830126}
-    - target: {fileID: 7403531066067376698, guid: a12ee9563048c804bbce3cf7d9dc41c2,
-        type: 3}
-      propertyPath: playerNoSpawnRadius
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7403531066067376698, guid: a12ee9563048c804bbce3cf7d9dc41c2,
-        type: 3}
-      propertyPath: maxAttemptForSpawningEnemy
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7766437566661984541, guid: a12ee9563048c804bbce3cf7d9dc41c2,
         type: 3}
       propertyPath: m_LocalPosition.x
