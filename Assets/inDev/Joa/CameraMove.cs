@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField] private Transform camPos;
+    [SerializeField] private Transform eyes;
 
     private void Update()
     {
-        transform.position = camPos.position;
+        transform.position = eyes.position;
     }
 }

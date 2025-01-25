@@ -8,6 +8,9 @@ public class PlayerCam : MonoBehaviour
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
+    [SerializeField] private float cameraMaxAngle = 90;
+    [SerializeField] private float cameraMinAngle = -90;
+
     [SerializeField] private Transform orientation;
 
     float xRotation;
@@ -27,7 +30,7 @@ public class PlayerCam : MonoBehaviour
         yRotation += mouseX * Time.deltaTime * sensX;
         
         xRotation -= mouseY * Time.deltaTime * sensY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, cameraMinAngle, cameraMaxAngle);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
