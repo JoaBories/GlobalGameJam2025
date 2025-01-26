@@ -46,6 +46,7 @@ public class PlayerLife : MonoBehaviour
         {
             pv -= damage;
             Debug.Log(pv);
+            SoundManager.instance.PlaySound("PlayerHurt", transform.position);
             if (pv <= 0)
             {
                 // animation die
