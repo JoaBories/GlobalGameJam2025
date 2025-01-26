@@ -155,6 +155,8 @@ MonoBehaviour:
   cameraMaxAngle: 30
   cameraMinAngle: -30
   orientation: {fileID: 4864309643413440841}
+  playerSpwanEffect: {fileID: 1883886103225972946, guid: 3d300d8f9957c2940b5693914e791996,
+    type: 3}
 --- !u!1 &1772718628376978858
 GameObject:
   m_ObjectHideFlags: 0

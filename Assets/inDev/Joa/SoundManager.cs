@@ -33,8 +33,7 @@ public class SoundManager : MonoBehaviour
             audioSource.volume = volume;
             audioSource.pitch = pitch;
             audioSource.Play();
-            Destroy(audioSource, audioSource.clip.length);
-            Debug.Log(name);
+            Destroy(audioSource.gameObject, Mathf.Min(audioSource.clip.length, 2f));
         }
     }
 

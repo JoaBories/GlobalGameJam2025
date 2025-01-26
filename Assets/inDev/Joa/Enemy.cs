@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     private Vector3 tempVel;
 
+    private float soundTimer;
+
     private Animator animator;
 
     private void Awake()
@@ -33,6 +35,13 @@ public class Enemy : MonoBehaviour
             {
                 rb.WakeUp();
                 rb.velocity = tempVel;
+            }
+
+            soundTimer -= Time.fixedDeltaTime;
+            if (soundTimer < 0)
+            {
+                SoundManager.instance.PlaySound("Enemy", transform.position);
+                soundTimer = Random.Range(2f, 3f);
             }
 
             Vector3 diff = player.transform.position - transform.position;
@@ -68,7 +77,7 @@ public class Enemy : MonoBehaviour
             animator.Play("yassified");
             GameManager.instance.GainPoints(pointForKill);
             Destroy(rb);
-            Destroy(gameObject, 50f);
+            Destroy(gameObject, 2f);
             Destroy(GetComponent<CapsuleCollider>());
             Destroy(this);
         } 

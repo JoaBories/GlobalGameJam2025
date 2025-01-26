@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
                 if (stepTimer < 0)
                 {
                     SoundManager.instance.PlaySound("Step", transform.position);
-                    stepTimer = Random.Range(0.6f, 0.9f);
+                    stepTimer = Random.Range(0.4f, 0.6f);
                 }
             }
 
