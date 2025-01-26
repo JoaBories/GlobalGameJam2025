@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, Mathf.Atan2(flatDiff.x, flatDiff.y) * Mathf.Rad2Deg, 0);
     }
 
-    public void Hit(float damage)
+    public void Hit(float damage, Vector3 knockback)
     {
         pv -= damage;
         Debug.Log(pv);
@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         else
         {
             //animation hurt
+            transform.position -= knockback;
         }
     }
 

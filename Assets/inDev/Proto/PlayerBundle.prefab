@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 6278290854474206681}
   - component: {fileID: 8840361349514241550}
   - component: {fileID: 8309590939273034072}
+  - component: {fileID: 9021426409230165358}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683d626ed64e0bd4d801925e4d69fb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 70
+  baseMoveSpeed: 7
   orientation: {fileID: 4864309643413440841}
   groundDrag: 5
 --- !u!114 &8840361349514241550
@@ -404,12 +405,33 @@ MonoBehaviour:
   eyes: {fileID: 2272496288149726700}
   bulletSpeed: 5
   bulletLifeSpan: 10
-  shootCooldown: 0.2
+  baseFireRate: 1
   bulletOffset: 1
   damage: 1
   maxAmmo: 50
   ammoPerSecOfReload: 5
   ammoPerBullet: 1
+--- !u!114 &9021426409230165358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772718628376978858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fbaf92acebe2b141937070e80cc7002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbOfDamageUpgrade: 0
+  nbOfSpeedUpgrade: 0
+  nbOfKnockbackUpgrade: 0
+  nbOfFirerateUpgrade: 0
+  DamageUpgradeAmount: 1
+  SpeedUpgradeAmount: 1
+  KnockbackUpgradeAmount: 1
+  FirerateUpgradeAmount: 1
+  HealUpgradeAmount: 1
 --- !u!1 &2171914799507670829
 GameObject:
   m_ObjectHideFlags: 0

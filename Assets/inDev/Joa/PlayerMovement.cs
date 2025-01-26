@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    [SerializeField] float baseMoveSpeed;
     [SerializeField] Transform orientation;
     [SerializeField] float groundDrag;
 
@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody rb;
+
+    private float moveSpeed;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        moveSpeed = (baseMoveSpeed + (PlayerUpgrade.Instance.SpeedUpgradeAmount * PlayerUpgrade.Instance.nbOfSpeedUpgrade)) * 10;
+
         moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
         rb.AddForce(moveDirection.normalized * moveSpeed);
         

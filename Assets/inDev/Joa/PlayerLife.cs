@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
+    public static PlayerLife Instance;
+
     [SerializeField] private float maxPv;
     [SerializeField] private float invincibilityCooldown;
 
     public float pv;
 
     private float invicibilityTimer;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -46,6 +53,15 @@ public class PlayerLife : MonoBehaviour
                 // animatio hurt
                 invicibilityTimer = invincibilityCooldown;
             }
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        pv += amount;
+        if (pv > maxPv)
+        {
+            pv = maxPv;
         }
     }
 }

@@ -7,6 +7,7 @@ public class BubbleScript : MonoBehaviour
     public float lifeSpan;
     public float lifeTime;
     public float damage;
+    public float baseBnockback;
     private Rigidbody rb;
 
     [SerializeField] private List<int> layersNumberForPop;
@@ -35,7 +36,7 @@ public class BubbleScript : MonoBehaviour
         }
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<Enemy>().Hit(damage);
+            other.gameObject.GetComponent<Enemy>().Hit(damage + (PlayerUpgrade.Instance.nbOfDamageUpgrade * PlayerUpgrade.Instance.DamageUpgradeAmount), -rb.velocity.normalized * (baseBnockback + PlayerUpgrade.Instance.nbOfKnockbackUpgrade * PlayerUpgrade.Instance.KnockbackUpgradeAmount));
             Pop();
         }
     }
