@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,12 +12,16 @@ public class GameManager : MonoBehaviour
     public static int nbOfUpgrades; //same and this one just for math
 
     private float timer;
+    private int timerSimple;
 
     public bool pause;
+    public GameObject pauseMenu;
+   
 
     [SerializeField] private float endTime;
     [SerializeField] private GameObject pointDisplay;
     [SerializeField] private GameObject timerDisplay;
+    
 
     [SerializeField] private int pointByUpgrade;
 
@@ -34,21 +39,22 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             pause = !pause;
+            pauseMenu.SetActive(true);
             Debug.Log(pause);
         }
 
         if (!pause)
         {
 
-
+            pauseMenu.SetActive(false);
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 End();
             }
-
-            // pointDisplay
-            // timerDisplay
+            timerSimple = (int) timer;
+            pointDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + point; // pointDisplay
+            timerDisplay.GetComponent<TextMeshProUGUI>().text = "Time : " + timerSimple;// timerDisplay
         }
     }
 

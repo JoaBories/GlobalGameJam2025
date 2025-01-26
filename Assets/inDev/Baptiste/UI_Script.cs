@@ -1,13 +1,14 @@
 
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Script : MonoBehaviour
 {
-
-
+    private GameManager gameManager;
+    public GameObject UImanager;
     public Button play;
     public Button mainMenu;
     public Button resume;
@@ -28,7 +29,7 @@ public class UI_Script : MonoBehaviour
     public Sprite soap;
     public Sprite wand;
 
-
+    
     private string _textDuck;
     private string _textChampaign;
     private string _textSponge;
@@ -38,6 +39,9 @@ public class UI_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+      gameManager = UImanager.GetComponent<GameManager>();
+
       if (play != null) { play.GetComponent<Button>().onClick.AddListener(Play); }
       if (resume != null) { resume.GetComponent<Button>().onClick.AddListener(Resume); }
       if (quit != null){ quit.GetComponent<Button>().onClick.AddListener(Quit); }
@@ -66,7 +70,7 @@ if (upgradeButton1 != null && upgradeButton2 != null)
         
     }
     public void Play() { soundSource.PlayOneShot(clickSound);  SceneManager.LoadScene(1); }
-    public void Resume() { soundSource.PlayOneShot(clickSound); }
+    public void Resume() { soundSource.PlayOneShot(clickSound); gameManager.pause = false; }
     public void Quit() { soundSource.PlayOneShot(clickSound);  Application.Quit(); }
     public void Upgrade() { soundSource.PlayOneShot(clickSound); SceneManager.LoadScene(0); }
     private void UpgradeChoose() 
@@ -77,8 +81,8 @@ if (upgradeButton1 != null && upgradeButton2 != null)
         else if (premRnd == 2) { _icon1.sprite = champaign; _text1.text = _textChampaign; }
         else if (premRnd == 3) { _icon1.sprite = soap; _text1.text = _textSoap; }
         else { _icon1.sprite = sponge; _text1.text = _textSponge; }
-        deuxRnd = Random.Range(0, 5); ;
-        if (deuxRnd == premRnd) { deuxRnd = Random.Range(0, 5); }
+        deuxRnd = Random.Range(0, 5); 
+        while (deuxRnd == premRnd) { deuxRnd = Random.Range(0, 5); }
         if (deuxRnd == 0) { _icon2.sprite = duck; _text2.text = _textDuck; }
         else if (deuxRnd == 1) { _icon2.sprite = wand; _text2.text = _textWand; }
         else if (deuxRnd == 2) { _icon2.sprite = champaign; _text2.text = _textChampaign; }
