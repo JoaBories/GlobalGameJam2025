@@ -718,6 +718,7 @@ MonoBehaviour:
   ammoUI: {fileID: 7599731584692422024}
   R_hand: {fileID: 6659987118193834781}
   L_hand: {fileID: 6126859312972044544}
+  Shoot_hand: {fileID: 7878265831597065242}
   restR_hand: {fileID: 21300000, guid: eb126c8e0f4456b4f8df6145ced599bc, type: 3}
   shootR_hand: {fileID: 21300000, guid: 53e5daa010bd8f745a640c2f9dff3349, type: 3}
   reloadL_hand: {fileID: 21300000, guid: 10c1e401cfe01f94bbe5370aed06a634, type: 3}
