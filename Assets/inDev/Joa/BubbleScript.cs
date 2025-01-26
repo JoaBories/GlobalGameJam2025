@@ -10,6 +10,8 @@ public class BubbleScript : MonoBehaviour
     public float baseBnockback;
     private Rigidbody rb;
 
+    private Vector3 tempVel;
+
     [SerializeField] private List<int> layersNumberForPop;
 
     private void Awake()
@@ -21,10 +23,27 @@ public class BubbleScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lifeTime += Time.fixedDeltaTime;
-        if (lifeTime >= lifeSpan)
+        if (!GameManager.instance.pause)
         {
-            Pop();
+            lifeTime += Time.fixedDeltaTime;
+            if (lifeTime >= lifeSpan)
+            {
+                Pop();
+            }
+
+            if (rb.IsSleeping())
+            {
+                rb.WakeUp();
+                rb.velocity = tempVel;
+            }
+        }
+        else
+        {
+            if (!rb.IsSleeping())
+            {
+                tempVel = rb.velocity;
+            }
+            rb.Sleep();
         }
     }
 

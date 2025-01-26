@@ -25,7 +25,10 @@ public class PlayerLife : MonoBehaviour
 
     private void FixedUpdate()
     {
-        invicibilityTimer -= Time.fixedDeltaTime;
+        if (!GameManager.instance.pause)
+        {
+            invicibilityTimer -= Time.fixedDeltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

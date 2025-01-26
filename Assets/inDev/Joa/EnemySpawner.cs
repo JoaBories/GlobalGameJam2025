@@ -45,11 +45,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lastSpawnTime -= Time.fixedDeltaTime;
-
-        if (lastSpawnTime <= 0)
+        if (!GameManager.instance.pause)
         {
-            SpawnEnemy();
+            lastSpawnTime -= Time.fixedDeltaTime;
+
+            if (lastSpawnTime <= 0)
+            {
+                SpawnEnemy();
+            }
         }
     }
 

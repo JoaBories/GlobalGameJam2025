@@ -27,13 +27,16 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        yRotation += mouseX * Time.deltaTime * sensX;
+        if (!GameManager.instance.pause)
+        {
+            yRotation += mouseX * Time.deltaTime * sensX;
         
-        xRotation -= mouseY * Time.deltaTime * sensY;
-        xRotation = Mathf.Clamp(xRotation, cameraMinAngle, cameraMaxAngle);
+            xRotation -= mouseY * Time.deltaTime * sensY;
+            xRotation = Mathf.Clamp(xRotation, cameraMinAngle, cameraMaxAngle);
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
     }
 
     public void Onlook(InputAction.CallbackContext context)

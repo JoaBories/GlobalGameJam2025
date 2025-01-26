@@ -24,20 +24,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveSpeed = (baseMoveSpeed + (PlayerUpgrade.Instance.SpeedUpgradeAmount * PlayerUpgrade.Instance.nbOfSpeedUpgrade)) * 10;
-
-        moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
-        rb.AddForce(moveDirection.normalized * moveSpeed);
-        
-        rb.drag = groundDrag;
-
-        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.y);
-
-        if (flatVelocity.sqrMagnitude > moveSpeed * moveSpeed)
+        if (!GameManager.instance.pause)
         {
-            Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
+            moveSpeed = (baseMoveSpeed + (PlayerUpgrade.Instance.SpeedUpgradeAmount * PlayerUpgrade.Instance.nbOfSpeedUpgrade)) * 10;
+
+            moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
+            rb.AddForce(moveDirection.normalized * moveSpeed);
+        
+            rb.drag = groundDrag;
+
+            Vector3 flatVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.y);
+
+            if (flatVelocity.sqrMagnitude > moveSpeed * moveSpeed)
+            {
+                Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
+            }
+
+            if (rb.IsSleeping())
+            {
+                rb.WakeUp();
+            }
         }
+        else
+        {
+            rb.Sleep();
+        }
+
     }
 
     public void OnMove(InputAction.CallbackContext context)

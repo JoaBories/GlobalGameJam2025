@@ -31,24 +31,29 @@ public class PlayerShoot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float shootCooldown = 1/(baseFireRate + PlayerUpgrade.Instance.FirerateUpgradeAmount * PlayerUpgrade.Instance.nbOfFirerateUpgrade);
-
-        lastShootTimer -= Time.fixedDeltaTime;
-
-        if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
+        if (!GameManager.instance.pause)
         {
-            Shoot();
-            lastShootTimer = shootCooldown;
-        }
 
-        if (reloading)
-        {
-            ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
-            if (ammo > maxAmmo)
+            float shootCooldown = 1/(baseFireRate + PlayerUpgrade.Instance.FirerateUpgradeAmount * PlayerUpgrade.Instance.nbOfFirerateUpgrade);
+
+            lastShootTimer -= Time.fixedDeltaTime;
+
+            if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
             {
-                ammo = maxAmmo;
+                Shoot();
+                lastShootTimer = shootCooldown;
+            }
+
+            if (reloading)
+            {
+                ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
+                if (ammo > maxAmmo)
+                {
+                    ammo = maxAmmo;
+                }
             }
         }
+
 
         //Debug.Log(ammo);
     }

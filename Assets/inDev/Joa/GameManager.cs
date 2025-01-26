@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private float timer;
 
+    public bool pause;
+
     [SerializeField] private float endTime;
     [SerializeField] private GameObject pointDisplay;
     [SerializeField] private GameObject timerDisplay;
@@ -29,16 +31,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            End();
+            pause = !pause;
+            Debug.Log(pause);
         }
 
-        // pointDisplay
-        // timerDisplay
+        if (!pause)
+        {
 
-        Debug.Log(point + " " + timer); //for now
+
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                End();
+            }
+
+            // pointDisplay
+            // timerDisplay
+        }
     }
 
     public void GainPoints(int gain)
