@@ -40,13 +40,13 @@ public class UI_Script : MonoBehaviour
     void Start()
     {
 
-      gameManager = UImanager.GetComponent<GameManager>();
+        if (UImanager != null) { gameManager = UImanager.GetComponent<GameManager>(); }
 
       if (play != null) { play.GetComponent<Button>().onClick.AddListener(Play); }
       if (resume != null) { resume.GetComponent<Button>().onClick.AddListener(Resume); }
       if (quit != null){ quit.GetComponent<Button>().onClick.AddListener(Quit); }
-      if(upgradeButton1 != null){ upgradeButton1.GetComponent<Button>().onClick.AddListener(Upgrade);}
-      if(upgradeButton2 != null){  upgradeButton2.GetComponent<Button>().onClick.AddListener(Upgrade);}
+      if(upgradeButton1 != null){ upgradeButton1.GetComponent<Button>().onClick.AddListener(Upgrade1);}
+      if(upgradeButton2 != null){  upgradeButton2.GetComponent<Button>().onClick.AddListener(Upgrade2);}
 
       
     
@@ -57,11 +57,16 @@ public class UI_Script : MonoBehaviour
         _textSoap = "Increase damage";
         _textWand = "Increase firerate";
 
-if (upgradeButton1 != null && upgradeButton2 != null)
-      {
-            UpgradeChoose();
-      }
 
+
+    }
+
+    private void OnEnable()
+    {
+        if (upgradeButton1 != null && upgradeButton2 != null)
+        {
+            UpgradeChoose();
+        }
     }
 
     // Update is called once per frame
@@ -70,9 +75,10 @@ if (upgradeButton1 != null && upgradeButton2 != null)
         
     }
     public void Play() { soundSource.PlayOneShot(clickSound);  SceneManager.LoadScene(1); }
-    public void Resume() { soundSource.PlayOneShot(clickSound); gameManager.pause = false; }
+    public void Resume() { soundSource.PlayOneShot(clickSound); gameManager.Unpause(); }
     public void Quit() { soundSource.PlayOneShot(clickSound);  Application.Quit(); }
-    public void Upgrade() { soundSource.PlayOneShot(clickSound); SceneManager.LoadScene(0); }
+    public void Upgrade1() { soundSource.PlayOneShot(clickSound); PlayerUpgrade.Instance.GetUpgrade(premRnd); }
+    public void Upgrade2() { soundSource.PlayOneShot(clickSound); PlayerUpgrade.Instance.GetUpgrade(deuxRnd); }
     private void UpgradeChoose() 
     {
         premRnd = Random.Range(0,5) ;

@@ -20,7 +20,7 @@ public class PlayerCam : MonoBehaviour
     float mouseX;
     float mouseY;
 
-    private void Start()
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

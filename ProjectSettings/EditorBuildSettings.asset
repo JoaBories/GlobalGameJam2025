@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/inDev/Joa/Joa.unity
-    guid: c9182e5250af21c478fdf8b03edb4329
+    path: Assets/Scenes/MainMenu.unity
+    guid: ba1ff6bbbf8238e4d8a8791c19f740c5
+  - enabled: 1
+    path: Assets/inDev/Baptiste/Prefabs/Intro.unity
+    guid: 867082bdefa84f048bd1db851507e25e
+  - enabled: 1
+    path: Assets/Scenes/Fish Market.unity
+    guid: 215848851897fc94eb465e4f23b06380
+  - enabled: 1
+    path: Assets/Scenes/Church.unity
+    guid: 391a71b0a467f794589919d2cd5f582a
+  - enabled: 1
+    path: Assets/inDev/Joa/End.unity
+    guid: 003d20f6ed6df294faf26f7d255ed8d7
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 035ecd2f3bba7b0479880bdf01cd7463
   m_configObjects: {}

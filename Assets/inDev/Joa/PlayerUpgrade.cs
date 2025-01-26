@@ -52,5 +52,7 @@ public class PlayerUpgrade : MonoBehaviour
                 break;
 
         }
+
+        GameManager.instance.Unpause();
     }
 }

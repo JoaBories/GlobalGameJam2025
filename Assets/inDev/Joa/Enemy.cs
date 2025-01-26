@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
             GameManager.instance.GainPoints(pointForKill);
             if (CompareTag("Cat"))
             {
-                SoundManager.instance.PlaySound("catDoor", transform.position);
+                SoundManager.instance.PlaySound("Cat", transform.position);
             }
             else
             {

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public bool pause;
     public GameObject pauseMenu;
+    public GameObject playerUI;
+    public GameObject upgradeUI;
    
 
     [SerializeField] private float endTime;
@@ -32,27 +34,38 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         timer = endTime;
+
+        if (upgradeUI != null) { upgradeUI.SetActive(false); }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            pause = !pause;
-            pauseMenu.SetActive(true);
-            Debug.Log(pause);
+            if (pause)
+            {
+                Unpause();
+            } else
+            {
+                Pause();
+                pauseMenu.SetActive(true);
+                playerUI.SetActive(false);
+            }
         }
 
         if (!pause)
         {
-
-            pauseMenu.SetActive(false);
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            if (upgradeUI != null)
             {
-                End();
+                pauseMenu.SetActive(false);
+                playerUI.SetActive(true);
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    End();
+                }
+                timerSimple = (int) timer;
             }
-            timerSimple = (int) timer;
             pointDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + point; // pointDisplay
             timerDisplay.GetComponent<TextMeshProUGUI>().text = "Time : " + timerSimple;// timerDisplay
         }
@@ -71,7 +84,9 @@ public class GameManager : MonoBehaviour
 
     private void GetUpgrade()
     {
-        Debug.Log("upgrade Time");
+        playerUI.SetActive(false);
+        upgradeUI.SetActive(true);
+        Pause();
     }
 
     private void End()
@@ -80,4 +95,20 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
 
+    public void Pause()
+    {
+        pause = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void Unpause()
+    {
+        pause = false;
+        playerUI.SetActive(true);
+        upgradeUI.SetActive(false);
+        pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
