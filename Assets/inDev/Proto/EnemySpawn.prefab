@@ -49,11 +49,12 @@ MonoBehaviour:
   spawningCooldown: 1
   startNumber: 8
   enemyPrefabList:
-  - {fileID: 5705084147753162646, guid: e2e7e407d38f58647b6146f92f1e376c, type: 3}
-  - {fileID: 5705084147753162646, guid: e49af1dbf3f79464fb2e242fcf7b3251, type: 3}
-  - {fileID: 5705084147753162646, guid: 4fe716559bbf15946af5a0b8bed1f8df, type: 3}
   - {fileID: 5705084147753162646, guid: 519376b625f87b84f9bf023592e99b71, type: 3}
   - {fileID: 5705084147753162646, guid: f673ed689d0a6e5499887513fdd5d689, type: 3}
+  - {fileID: 5705084147753162646, guid: e2e7e407d38f58647b6146f92f1e376c, type: 3}
+  - {fileID: 5705084147753162646, guid: e49af1dbf3f79464fb2e242fcf7b3251, type: 3}
+  - {fileID: 5705084147753162646, guid: 67e4e86656ef7f040a1edc415dce49eb, type: 3}
+  - {fileID: 5705084147753162646, guid: 519376b625f87b84f9bf023592e99b71, type: 3}
   spawnZoneSize: {x: 28, y: 0, z: 28}
   spawnZoneHoleSize: {x: 20, y: 0, z: 20}
   playerNoSpawnRadius: 8
