@@ -77,8 +77,8 @@ if (upgradeButton1 != null && upgradeButton2 != null)
         else if (premRnd == 2) { _icon1.sprite = champaign; _text1.text = _textChampaign; }
         else if (premRnd == 3) { _icon1.sprite = soap; _text1.text = _textSoap; }
         else { _icon1.sprite = sponge; _text1.text = _textSponge; }
-        deuxRnd = Random.Range(0, 5); ;
-        if (deuxRnd == premRnd) { deuxRnd = Random.Range(0, 5); }
+        deuxRnd = Random.Range(0, 5); 
+        while (deuxRnd == premRnd) { deuxRnd = Random.Range(0, 5); }
         if (deuxRnd == 0) { _icon2.sprite = duck; _text2.text = _textDuck; }
         else if (deuxRnd == 1) { _icon2.sprite = wand; _text2.text = _textWand; }
         else if (deuxRnd == 2) { _icon2.sprite = champaign; _text2.text = _textChampaign; }

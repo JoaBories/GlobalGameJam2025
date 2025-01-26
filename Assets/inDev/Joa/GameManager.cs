@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,7 +36,8 @@ public class GameManager : MonoBehaviour
             End();
         }
 
-        // pointDisplay
+        pointDisplay.GetComponent<TextMeshProUGUI>().text = "Score :" + point;
+        timerDisplay.GetComponent<TextMeshProUGUI>().text = "Time :" + timer; 
         // timerDisplay
 
         Debug.Log(point + " " + timer); //for now
