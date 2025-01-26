@@ -48,7 +48,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        Debug.Log(ammo);
+        //Debug.Log(ammo);
     }
 
     private void Shoot()

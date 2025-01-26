@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4167991338377342604}
   - component: {fileID: 8972954523302628661}
+  - component: {fileID: 3482256750379690309}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,3 +49,22 @@ MonoBehaviour:
   pointDisplay: {fileID: 0}
   timerDisplay: {fileID: 0}
   pointByUpgrade: 100
+  nextSceneName: 
+--- !u!114 &3482256750379690309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228612652970915201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadbface864a25f48b8a7e29fca6619c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioDBSet:
+    soundDB:
+    - name: win
+      clip: {fileID: 8300000, guid: 00bfd024845343040804a5230a1350ef, type: 3}
+  soundObject: {fileID: 3849029137154822642, guid: 27c25f8c4eca1b8409f21f3290bd33c0,
+    type: 3}

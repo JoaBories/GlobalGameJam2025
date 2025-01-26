@@ -1532,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2228612652970915201, guid: 4c2c7fa20ccda9f40927a10189bb856a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4167991338377342604, guid: 4c2c7fa20ccda9f40927a10189bb856a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1580,6 +1585,11 @@ PrefabInstance:
     - target: {fileID: 4167991338377342604, guid: 4c2c7fa20ccda9f40927a10189bb856a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972954523302628661, guid: 4c2c7fa20ccda9f40927a10189bb856a,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1663,7 +1673,7 @@ PrefabInstance:
     - target: {fileID: 8103014211576924539, guid: a12ee9563048c804bbce3cf7d9dc41c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

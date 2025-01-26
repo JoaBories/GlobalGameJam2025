@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject timerDisplay;
 
     [SerializeField] private int pointByUpgrade;
+
+    [SerializeField] private string nextSceneName;
 
     private void Awake()
     {
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
     private void End()
     {
         Debug.Log("no more time");
+        SceneManager.LoadScene(nextSceneName);
     }
 
 }
