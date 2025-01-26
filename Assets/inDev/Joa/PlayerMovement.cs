@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     private float moveSpeed;
+
+    private float stepTimer;
 
     private void Awake()
     {
@@ -34,6 +34,16 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
 
             Vector3 flatVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.y);
+
+            if (moveInput != Vector2.zero)
+            {
+                stepTimer -= Time.fixedDeltaTime;
+                if (stepTimer < 0)
+                {
+                    SoundManager.instance.PlaySound("Step", transform.position);
+                    stepTimer = Random.Range(0.6f, 0.9f);
+                }
+            }
 
             if (flatVelocity.sqrMagnitude > moveSpeed * moveSpeed)
             {
