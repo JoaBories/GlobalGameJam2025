@@ -15,12 +15,14 @@ public class Enemy : MonoBehaviour
 
     private Vector3 tempVel;
 
+    private Animator animator;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -63,13 +65,16 @@ public class Enemy : MonoBehaviour
         Debug.Log(pv);
         if (pv <= 0)
         {
-            //animation yassified
+            animator.Play("yassified");
             GameManager.instance.GainPoints(pointForKill);
-            Destroy(gameObject);
+            Destroy(rb);
+            Destroy(gameObject, 50f);
+            Destroy(GetComponent<CapsuleCollider>());
+            Destroy(this);
         } 
         else
         {
-            //animation hurt
+            animator.Play("hurt");
             rb.AddForce(-new Vector3(knockback.x, 0, knockback.z) * 10, ForceMode.Impulse);
         }
     }
