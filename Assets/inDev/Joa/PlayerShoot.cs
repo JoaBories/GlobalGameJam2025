@@ -10,7 +10,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform eyes;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float bulletLifeSpan;
-    [SerializeField] private float shootCooldown;
+    [SerializeField] private float baseFireRate;
     [SerializeField] private float bulletOffset;
     [SerializeField] private float damage;
     [SerializeField] private float maxAmmo;
@@ -31,24 +31,31 @@ public class PlayerShoot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lastShootTimer -= Time.fixedDeltaTime;
-
-        if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
+        if (!GameManager.instance.pause)
         {
-            Shoot();
-            lastShootTimer = shootCooldown;
-        }
 
-        if (reloading)
-        {
-            ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
-            if (ammo > maxAmmo)
+            float shootCooldown = 1/(baseFireRate + PlayerUpgrade.Instance.FirerateUpgradeAmount * PlayerUpgrade.Instance.nbOfFirerateUpgrade);
+
+            lastShootTimer -= Time.fixedDeltaTime;
+
+            if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
             {
-                ammo = maxAmmo;
+                Shoot();
+                lastShootTimer = shootCooldown;
+            }
+
+            if (reloading)
+            {
+                ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
+                if (ammo > maxAmmo)
+                {
+                    ammo = maxAmmo;
+                }
             }
         }
 
-        Debug.Log(ammo);
+
+        //Debug.Log(ammo);
     }
 
     private void Shoot()

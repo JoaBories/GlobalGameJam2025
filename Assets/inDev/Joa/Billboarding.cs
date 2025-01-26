@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Billboarding : MonoBehaviour
 {
     Vector3 cameraViewDir;
-
     private void Update()
     {
         cameraViewDir = Camera.main.transform.forward;
