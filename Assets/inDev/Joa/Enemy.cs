@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static bool isAlreadyScreaming = false;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float acceleration;
     private Transform player;
@@ -14,8 +16,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int pointForKill;
 
     private Vector3 tempVel;
-
-    private float soundTimer;
 
     private Animator animator;
 
@@ -37,13 +37,6 @@ public class Enemy : MonoBehaviour
                 rb.velocity = tempVel;
             }
 
-            soundTimer -= Time.fixedDeltaTime;
-            if (soundTimer < 0)
-            {
-                SoundManager.instance.PlaySound("Enemy", transform.position);
-                soundTimer = Random.Range(2f, 3f);
-            }
-
             Vector3 diff = player.transform.position - transform.position;
             Vector2 flatDiff = new Vector2(diff.x, diff.z);
             transform.rotation = Quaternion.Euler(0, Mathf.Atan2(flatDiff.x, flatDiff.y) * Mathf.Rad2Deg, 0);
@@ -57,6 +50,13 @@ public class Enemy : MonoBehaviour
 
                 rb.AddForce(new Vector3(movement.x, 0, movement.z), ForceMode.Force);
             }
+
+            if ((GameObject.FindGameObjectWithTag("Player").gameObject.transform.position - transform.position).sqrMagnitude <= 3.5 * 3.5 && !isAlreadyScreaming)
+            {
+                SoundManager.instance.PlaySound("TooClose", transform.position);
+                isAlreadyScreaming = true;
+                Invoke("ResetScreaming", 1f);
+            }
         }
         else
         {
@@ -68,6 +68,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void ResetScreaming()
+    {
+        isAlreadyScreaming = false;
+    }
+
     public void Hit(float damage, Vector3 knockback)
     {
         pv -= damage;
@@ -76,6 +81,14 @@ public class Enemy : MonoBehaviour
         {
             animator.Play("yassified");
             GameManager.instance.GainPoints(pointForKill);
+            if (CompareTag("Cat"))
+            {
+                SoundManager.instance.PlaySound("catDoor", transform.position);
+            }
+            else
+            {
+                SoundManager.instance.PlaySound("Yassified", transform.position);
+            }
             Destroy(rb);
             Destroy(gameObject, 2f);
             Destroy(GetComponent<CapsuleCollider>());

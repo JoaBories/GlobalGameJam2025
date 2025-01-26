@@ -55,7 +55,7 @@ public class BubbleScript : MonoBehaviour
         {
             Pop();
         }
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Cat"))
         {
             other.gameObject.GetComponent<Enemy>().Hit(damage + (PlayerUpgrade.Instance.nbOfDamageUpgrade * PlayerUpgrade.Instance.DamageUpgradeAmount), -rb.velocity.normalized * (baseBnockback + PlayerUpgrade.Instance.nbOfKnockbackUpgrade * PlayerUpgrade.Instance.KnockbackUpgradeAmount));
             PopEnemy();
