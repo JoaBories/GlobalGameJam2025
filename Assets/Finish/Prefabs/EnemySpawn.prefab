@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxNumberOfEnemy: 40
+  maxNumberOfEnemy: 10
   spawningCooldown: 1
-  startNumber: 8
+  startNumber: 0
   enemyPrefabList:
   - {fileID: 5705084147753162646, guid: 519376b625f87b84f9bf023592e99b71, type: 3}
   - {fileID: 5705084147753162646, guid: f673ed689d0a6e5499887513fdd5d689, type: 3}

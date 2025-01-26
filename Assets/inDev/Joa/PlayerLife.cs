@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerLife : MonoBehaviour
 
     private float invicibilityTimer;
 
+    [SerializeField] Image lifeUI;
+
     private void Awake()
     {
         Instance = this;
@@ -22,6 +25,12 @@ public class PlayerLife : MonoBehaviour
     {
         pv = maxPv;
     }
+
+    private void Update()
+    {
+        lifeUI.fillAmount = pv/maxPv;
+    }
+
 
     private void FixedUpdate()
     {
@@ -50,7 +59,9 @@ public class PlayerLife : MonoBehaviour
             if (pv <= 0)
             {
                 // animation die
-                Debug.Log("die");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene("GameOver");
             }
             else
             {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float ammoPerSecOfReload;
     [SerializeField] private float ammoPerBullet;
 
+    [SerializeField] private Image ammoUI;
+
     private float ammo;
     private float lastShootTimer;
 
@@ -27,6 +30,11 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         ammo = maxAmmo;
+    }
+
+    private void Update()
+    {
+        ammoUI.fillAmount = ammo/maxAmmo;
     }
 
     private void FixedUpdate()
