@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/inDev/Joa/Joa.unity
     guid: c9182e5250af21c478fdf8b03edb4329
+  - enabled: 1
+    path: Assets/Scenes/Fish Market.unity
+    guid: 215848851897fc94eb465e4f23b06380
   m_configObjects: {}
