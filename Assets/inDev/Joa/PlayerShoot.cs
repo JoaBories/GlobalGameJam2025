@@ -30,6 +30,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Image R_hand;
     [SerializeField] private Image L_hand;
     [SerializeField] private Image Shoot_hand;
+    [SerializeField] private Image CrossHair;
 
     [SerializeField] private Sprite restR_hand;
     [SerializeField] private Sprite shootR_hand;
@@ -65,6 +66,7 @@ public class PlayerShoot : MonoBehaviour
                 }
 
                 R_hand.gameObject.SetActive(true);
+                CrossHair.gameObject.SetActive(false);
                 R_hand.sprite = reloadR_hand;
                 L_hand.gameObject.SetActive(true);
                 Shoot_hand.gameObject.SetActive(false);
@@ -72,6 +74,7 @@ public class PlayerShoot : MonoBehaviour
             else if (shooting)
             {
                 Shoot_hand.gameObject.SetActive(true);
+                CrossHair.gameObject.SetActive(false);
                 R_hand.gameObject.SetActive(false);
                 L_hand.gameObject.SetActive(false);
 
@@ -92,6 +95,7 @@ public class PlayerShoot : MonoBehaviour
             else
             {
                 R_hand.gameObject.SetActive(true);
+                CrossHair.gameObject.SetActive(true);
                 R_hand.sprite = restR_hand;
                 L_hand.gameObject.SetActive(false);
                 Shoot_hand.gameObject.SetActive(false);

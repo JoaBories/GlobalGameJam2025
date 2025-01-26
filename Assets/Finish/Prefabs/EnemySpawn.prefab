@@ -58,5 +58,5 @@ MonoBehaviour:
   - {fileID: 5705084147753162646, guid: 5aab67980390ae442aabd5bd7cdca13e, type: 3}
   spawnZoneSize: {x: 28, y: 0, z: 28}
   spawnZoneHoleSize: {x: 20, y: 0, z: 20}
-  playerNoSpawnRadius: 8
+  playerNoSpawnRadius: 15
   maxAttemptForSpawningEnemy: 20

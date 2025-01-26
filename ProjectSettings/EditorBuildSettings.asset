@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ba1ff6bbbf8238e4d8a8791c19f740c5
   - enabled: 1
-    path: Assets/inDev/Baptiste/Prefabs/Intro.unity
+    path: Assets/Scenes/Intro.unity
     guid: 867082bdefa84f048bd1db851507e25e
   - enabled: 1
     path: Assets/Scenes/Fish Market.unity

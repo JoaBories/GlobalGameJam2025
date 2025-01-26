@@ -51,11 +51,11 @@ public class Enemy : MonoBehaviour
                 rb.AddForce(new Vector3(movement.x, 0, movement.z), ForceMode.Force);
             }
 
-            if ((GameObject.FindGameObjectWithTag("Player").gameObject.transform.position - transform.position).sqrMagnitude <= 3.5 * 3.5 && !isAlreadyScreaming)
+            if ((GameObject.FindGameObjectWithTag("Player").gameObject.transform.position - transform.position).sqrMagnitude <= 3.5 * 3.5 && !isAlreadyScreaming && gameObject.CompareTag("Enemy"))
             {
                 SoundManager.instance.PlaySound("TooClose", transform.position);
                 isAlreadyScreaming = true;
-                Invoke("ResetScreaming", 1f);
+                Invoke("ResetScreaming", 4f);
             }
         }
         else

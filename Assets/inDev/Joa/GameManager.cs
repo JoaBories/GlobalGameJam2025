@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -40,19 +41,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (pause)
-            {
-                Unpause();
-            } else
-            {
-                Pause();
-                pauseMenu.SetActive(true);
-                playerUI.SetActive(false);
-            }
-        }
-
         if (!pause)
         {
             if (upgradeUI != null)
@@ -71,11 +59,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (pause)
+            {
+                Unpause();
+            }
+            else
+            {
+                Pause();
+                pauseMenu.SetActive(true);
+                playerUI.SetActive(false);
+            }
+        }
+    }
+
     public void GainPoints(int gain)
     {
         point += gain;
 
-        if (nbOfUpgrades * pointByUpgrade <= point)
+        if ((nbOfUpgrades + 1) * pointByUpgrade <= point)
         {
             nbOfUpgrades++;
             GetUpgrade();

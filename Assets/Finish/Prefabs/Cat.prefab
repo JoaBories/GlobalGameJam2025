@@ -175,8 +175,8 @@ MonoBehaviour:
   moveSpeed: 1
   acceleration: 1
   pv: 1
-  damage: 1
-  pointForKill: 20
+  damage: 0
+  pointForKill: 10
 --- !u!136 &8976930533814992516
 CapsuleCollider:
   m_ObjectHideFlags: 0

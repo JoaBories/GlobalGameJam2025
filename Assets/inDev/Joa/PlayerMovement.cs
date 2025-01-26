@@ -5,7 +5,7 @@ using UnityEngine.VFX;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float baseMoveSpeed;
-    [SerializeField] Transform orientation;
+    [SerializeField] Transform orientation; //"Shoot"
     [SerializeField] float groundDrag;
 
     private Vector2 moveInput;

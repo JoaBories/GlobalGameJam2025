@@ -9,4 +9,9 @@ public class cangesscene : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void changeclick()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

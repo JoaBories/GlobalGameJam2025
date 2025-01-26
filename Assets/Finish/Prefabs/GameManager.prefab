@@ -48,10 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: 0
   pauseMenu: {fileID: 0}
+  playerUI: {fileID: 0}
+  upgradeUI: {fileID: 0}
   endTime: 120
   pointDisplay: {fileID: 0}
   timerDisplay: {fileID: 0}
-  pointByUpgrade: 100
+  pointByUpgrade: 40
   nextSceneName: 
 --- !u!114 &3482256750379690309
 MonoBehaviour:
