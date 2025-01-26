@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject currentEnemy = other.gameObject;
-        if (currentEnemy.CompareTag("Enemy"))
+        if (currentEnemy.CompareTag("Enemy") || currentEnemy.CompareTag("Cat"))
         {
             Hit(currentEnemy.GetComponent<Enemy>().damage);
         }

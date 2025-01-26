@@ -172,10 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d26222ead6209741b463b394d034228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  acceleration: 0
+  moveSpeed: 1
+  acceleration: 1
   pv: 1
-  damage: 2
+  damage: 1
   pointForKill: 10
 --- !u!136 &8976930533814992516
 CapsuleCollider:

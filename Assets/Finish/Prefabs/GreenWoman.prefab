@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  acceleration: 0
-  pv: 1
+  acceleration: 1
+  pv: 5
   damage: 2
   pointForKill: 10
 --- !u!136 &8976930533814992516
