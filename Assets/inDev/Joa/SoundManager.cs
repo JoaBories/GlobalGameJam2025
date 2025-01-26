@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -11,7 +12,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private NewDict AudioDBSet;
 
     [SerializeField] private AudioSource soundObject;
-
 
     private void Awake()
     {
@@ -27,12 +27,13 @@ public class SoundManager : MonoBehaviour
     {
         if (AudioDB.ContainsKey(name))
         {
+            float pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             AudioSource audioSource = Instantiate(soundObject, pos, Quaternion.identity);
             audioSource.clip = AudioDB[name];
             audioSource.volume = volume;
+            audioSource.pitch = pitch;
             audioSource.Play();
-            Destroy(audioSource, audioSource.clip.length);
-            Debug.Log(name);
+            Destroy(audioSource.gameObject, Mathf.Min(audioSource.clip.length, 2f));
         }
     }
 

@@ -12,6 +12,8 @@ public class BubbleScript : MonoBehaviour
 
     private Vector3 tempVel;
 
+    [SerializeField] private GameObject bubbleHit;
+
     [SerializeField] private List<int> layersNumberForPop;
 
     private void Awake()
@@ -53,15 +55,23 @@ public class BubbleScript : MonoBehaviour
         {
             Pop();
         }
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Cat"))
         {
             other.gameObject.GetComponent<Enemy>().Hit(damage + (PlayerUpgrade.Instance.nbOfDamageUpgrade * PlayerUpgrade.Instance.DamageUpgradeAmount), -rb.velocity.normalized * (baseBnockback + PlayerUpgrade.Instance.nbOfKnockbackUpgrade * PlayerUpgrade.Instance.KnockbackUpgradeAmount));
-            Pop();
+            PopEnemy();
         }
+    }
+
+    private void PopEnemy()
+    {
+        SoundManager.instance.PlaySound("BubbleHit", transform.position, 0.5f);
+        Destroy(Instantiate(bubbleHit, transform.position, Quaternion.identity), 1f);
+        Destroy(gameObject);
     }
 
     private void Pop()
     {
+        Destroy(Instantiate(bubbleHit, transform.position, Quaternion.identity), 0.5f);
         Destroy(gameObject);
     }
 }

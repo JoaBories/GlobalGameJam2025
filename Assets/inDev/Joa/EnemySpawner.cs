@@ -71,7 +71,6 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("toMuchAttempt");
                 return false;
             }
         }
@@ -91,7 +90,6 @@ public class EnemySpawner : MonoBehaviour
         {
             count++;
             spawnpoint = getRandomPosInSpawnZone();
-            Debug.Log(spawnpoint);
             if (spawnpoint.x >= spawnZoneHoleSize.x/2 || spawnpoint.x <= -spawnZoneHoleSize.x/2 || spawnpoint.z >= spawnZoneHoleSize.z/2 || spawnpoint.z <= -spawnZoneHoleSize.z / 2)
             {
                 if ((player.position - spawnpoint).sqrMagnitude >= playerNoSpawnRadius * playerNoSpawnRadius)

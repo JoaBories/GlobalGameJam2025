@@ -38,10 +38,17 @@ public class PlayerShoot : MonoBehaviour
 
             lastShootTimer -= Time.fixedDeltaTime;
 
-            if (shooting && lastShootTimer <= 0 && ammo >= ammoPerBullet && !reloading)
+            if (shooting && lastShootTimer <= 0 && !reloading)
             {
-                Shoot();
-                lastShootTimer = shootCooldown;
+                if (ammo >= ammoPerBullet) {
+                    Shoot();
+                    SoundManager.instance.PlaySound("Shoot", transform.position);
+                    lastShootTimer = shootCooldown;
+                }
+                else
+                {
+                    SoundManager.instance.PlaySound("ShootEmpty", transform.position);
+                }
             }
 
             if (reloading)
@@ -76,7 +83,7 @@ public class PlayerShoot : MonoBehaviour
         if (context.started)
         {
             reloading = true;
-            Debug.Log("reloading");
+            SoundManager.instance.PlaySound("Reloading", transform.position);
         }
 
         if (context.canceled)

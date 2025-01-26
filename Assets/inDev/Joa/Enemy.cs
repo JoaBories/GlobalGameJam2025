@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static bool isAlreadyScreaming = false;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float acceleration;
     private Transform player;
@@ -15,12 +17,14 @@ public class Enemy : MonoBehaviour
 
     private Vector3 tempVel;
 
+    private Animator animator;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -46,6 +50,13 @@ public class Enemy : MonoBehaviour
 
                 rb.AddForce(new Vector3(movement.x, 0, movement.z), ForceMode.Force);
             }
+
+            if ((GameObject.FindGameObjectWithTag("Player").gameObject.transform.position - transform.position).sqrMagnitude <= 3.5 * 3.5 && !isAlreadyScreaming)
+            {
+                SoundManager.instance.PlaySound("TooClose", transform.position);
+                isAlreadyScreaming = true;
+                Invoke("ResetScreaming", 1f);
+            }
         }
         else
         {
@@ -57,19 +68,35 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void ResetScreaming()
+    {
+        isAlreadyScreaming = false;
+    }
+
     public void Hit(float damage, Vector3 knockback)
     {
         pv -= damage;
         Debug.Log(pv);
         if (pv <= 0)
         {
-            //animation yassified
+            animator.Play("yassified");
             GameManager.instance.GainPoints(pointForKill);
-            Destroy(gameObject);
+            if (CompareTag("Cat"))
+            {
+                SoundManager.instance.PlaySound("catDoor", transform.position);
+            }
+            else
+            {
+                SoundManager.instance.PlaySound("Yassified", transform.position);
+            }
+            Destroy(rb);
+            Destroy(gameObject, 2f);
+            Destroy(GetComponent<CapsuleCollider>());
+            Destroy(this);
         } 
         else
         {
-            //animation hurt
+            animator.Play("hurt");
             rb.AddForce(-new Vector3(knockback.x, 0, knockback.z) * 10, ForceMode.Impulse);
         }
     }
