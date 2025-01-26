@@ -27,6 +27,15 @@ public class PlayerShoot : MonoBehaviour
 
     private bool reloading;
 
+    [SerializeField] private Image R_hand;
+    [SerializeField] private Image L_hand;
+
+    [SerializeField] private Sprite restR_hand;
+    [SerializeField] private Sprite shootR_hand;
+    [SerializeField] private Sprite reloadL_hand;
+    [SerializeField] private Sprite reloadR_hand;
+
+
     private void Start()
     {
         ammo = maxAmmo;
@@ -46,19 +55,6 @@ public class PlayerShoot : MonoBehaviour
 
             lastShootTimer -= Time.fixedDeltaTime;
 
-            if (shooting && lastShootTimer <= 0 && !reloading)
-            {
-                if (ammo >= ammoPerBullet) {
-                    Shoot();
-                    SoundManager.instance.PlaySound("Shoot", transform.position);
-                    lastShootTimer = shootCooldown;
-                }
-                else
-                {
-                    SoundManager.instance.PlaySound("ShootEmpty", transform.position);
-                }
-            }
-
             if (reloading)
             {
                 ammo += ammoPerSecOfReload * Time.fixedDeltaTime;
@@ -66,7 +62,35 @@ public class PlayerShoot : MonoBehaviour
                 {
                     ammo = maxAmmo;
                 }
+
+                R_hand.sprite = reloadR_hand;
+                L_hand.gameObject.SetActive(true);
             }
+            else if (shooting)
+            {
+                R_hand.sprite = shootR_hand;
+                L_hand.gameObject.SetActive(false);
+
+                if (lastShootTimer <= 0)
+                {
+                    if (ammo >= ammoPerBullet)
+                    {
+                        Shoot();
+                        SoundManager.instance.PlaySound("Shoot", transform.position);
+                        lastShootTimer = shootCooldown;
+                    }
+                    else
+                    {
+                        SoundManager.instance.PlaySound("ShootEmpty", transform.position);
+                    }
+                }
+            }
+            else
+            {
+                R_hand.sprite = restR_hand;
+                L_hand.gameObject.SetActive(false);
+            }
+
         }
 
 

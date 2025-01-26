@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
                 SoundManager.instance.PlaySound("Yassified", transform.position);
             }
             Destroy(rb);
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 3f);
             Destroy(GetComponent<CapsuleCollider>());
             Destroy(this);
         } 
