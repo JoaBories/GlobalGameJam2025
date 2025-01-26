@@ -7,7 +7,10 @@ public class BubbleScript : MonoBehaviour
     public float lifeSpan;
     public float lifeTime;
     public float damage;
+    public float baseBnockback;
     private Rigidbody rb;
+
+    private Vector3 tempVel;
 
     [SerializeField] private List<int> layersNumberForPop;
 
@@ -20,10 +23,27 @@ public class BubbleScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lifeTime += Time.fixedDeltaTime;
-        if (lifeTime >= lifeSpan)
+        if (!GameManager.instance.pause)
         {
-            Pop();
+            lifeTime += Time.fixedDeltaTime;
+            if (lifeTime >= lifeSpan)
+            {
+                Pop();
+            }
+
+            if (rb.IsSleeping())
+            {
+                rb.WakeUp();
+                rb.velocity = tempVel;
+            }
+        }
+        else
+        {
+            if (!rb.IsSleeping())
+            {
+                tempVel = rb.velocity;
+            }
+            rb.Sleep();
         }
     }
 
@@ -35,7 +55,7 @@ public class BubbleScript : MonoBehaviour
         }
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<Enemy>().Hit(damage);
+            other.gameObject.GetComponent<Enemy>().Hit(damage + (PlayerUpgrade.Instance.nbOfDamageUpgrade * PlayerUpgrade.Instance.DamageUpgradeAmount), -rb.velocity.normalized * (baseBnockback + PlayerUpgrade.Instance.nbOfKnockbackUpgrade * PlayerUpgrade.Instance.KnockbackUpgradeAmount));
             Pop();
         }
     }

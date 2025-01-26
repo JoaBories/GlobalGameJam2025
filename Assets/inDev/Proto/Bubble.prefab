@@ -75,6 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSpan: 0
   lifeTime: 0
+  damage: 0
+  baseBnockback: 1
   layersNumberForPop: 0700000008000000
 --- !u!1 &1847703940001595575
 GameObject:
